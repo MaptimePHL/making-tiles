@@ -1,0 +1,123 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family: 'Helvetica';
+  letter-spacing:-5px;
+  background:#000;
+  background-size:100%;
+  color:#fff;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em, a {
+  font-style:normal;
+  color:#8dbd0c;
+}
+
+a {
+  background: #34d0e7;
+  color:#000;
+  text-decoration:none;
+}
+
+img {
+  width:100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0;
+  left:0;
+}
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), cur = 0;
+    if (!s) return;
+    function go(n) {
+        cur = n;
+        var i = 1e3, e = s[n];
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        e.style.fontSize = i + 'px';
+        if (e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
+            e.firstChild.style.display = 'none';
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        while (
+            e.offsetWidth > window.innerWidth ||
+            e.offsetHeight > window.innerHeight) {
+            e.style.fontSize = (i -= 10) + 'px';
+            if (i < 0) break;
+        }
+        e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() {
+        go(++cur % (s.length));
+    };
+    document.onkeydown = function(e) {
+        (e.which === 39) && go(Math.min(s.length - 1, ++cur));
+        (e.which === 37) && go(Math.max(0, --cur));
+    };
+    function parse_hash() {
+        return Math.max(Math.min(
+            s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) cur = parse_hash() || cur;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== cur) go(c);
+    };
+
+    go(cur);
+};
+</script></head><body>
+<div>Making<em>Tiles</em></div>
+<div>By <a href="http://www.twitter.com/hamhandedly">Patrick Hammons</a> and <a href="http://www.twitter.com/jawntehrani">Jon Tehrani</a></div>
+<div>Housekeeping!<br>You can follow along here: <a href="">LINK</a>. Links are in blue boxes, <em>green</em> is just emphasis. You can comment and edit on <a href="">github!</a></div>
+<div>Today we're going to learn how to style our own tiles.</div>
+<div>BUT FIRST</div>
+<div>Why do we even care about tiles?</div>
+<div>Flashback: our first meetup</div>
+<div><img src="images/tiles/toner.jpg"><h1>this thing is super important, remember?</h1><</div>
+<div>Back in anatomy of a web map,<a href="http://lyzidiamond.com/">Lyzi Diamond</a>put together a <em>TON</em> of info about tiles</div>
+<div>Like, for example...</div>
+<div>All tiles<br>=<br>same size! 256x256 pixels<br>same boundaries<img src="images/tiles.gif"></div>
+<div><img src="images/tiles-loading.gif">All these little tiles load <em>way faster</em> than one big map.</div>
+<div>Web maps like this load the tiles that are on your screen. If the map is “smart,” it will pre-load tiles outside of the screen, along the top, bottom, left, and right.</div>
+<div>Each <em>zoom level</em> has its own set of tiles!</div>
+<div><img src="images/tiles/zoom0.png"><em>Zoom level 0: one tile for the world.</em></div>
+<div>With each additional zoom level, the number of tiles increases exponentially.</div>
+<div><img src="images/tiles/zoom1.png"><em>Zoom level 1: 4 tiles for the world.</em></div>
+<div><img src="images/tiles/zoom2-3-4-5.png"><em>Zoom level 2, 3, 4, 5</em></div>
+<div><img src="images/tiles/zoom13.png"><em>Zoom level 13</em></div>
+<div>Tiles are <em>rendered</em> in advance (usually) then stored in a cache</div>
+<div>Map tiles are just images on the web, so you can link to them individually.</div>
+<div>For example: <a href="http://tile.openstreetmap.org/4/2/6.png">http://tile.openstreetmap.org/4/2/6.png</a></div>
+<div>In order to understand how this works, let's break down the URL.</div>
+<div>http://<em>tile.openstreetmap.org</em>/4/2/6.png -- this is the name of the tile server.</div>
+<div>http://tile.openstreetmap.org/<em>4</em>/2/6.png -- this is the z value, or the zoom level.</div>
+<div>http://tile.openstreetmap.org/4/<em>2/6</em>.png -- This is the x/y value, or the place in the grid where the tile lives.</div>
+<div>Here's a review of how webmap components fit together:</div>
+<div><img src="images/basemap-datalayers-01.png"></div>
+<div><img src="images/basemap-datalayers-02.png"></div>
+<div><img src="images/basemap-datalayers-03.png"></div>
+<div><img src="images/basemap-datalayers-04.png"></div>
+<div><img src="images/basemap-datalayers-05.png"></div>
+<div><img src="images/basemap-datalayers-06.png"></div>
+<div>Make sense?</div>
+<div><img src="images/leaflet_code.png"></div>
+<div><img src="images/anatomy-of-a-web-map.png"></div>
+
