@@ -86,7 +86,7 @@ window.onload = function() {
 </script></head><body>
 <div>Making<em>Tiles</em></div>
 <div>By <a href="http://www.twitter.com/hamhandedly">Patrick Hammons</a> and <a href="http://www.twitter.com/jawntehrani">Jon Tehrani</a></div>
-<div>Housekeeping!<br>You can follow along here: <a href="http://ph.ly/mktiles">ph.ly/mktiles</a>. Links are in blue boxes, <em>red</em> is just emphasis. You can comment and edit on <a href="">github!</a></div>
+<div>Housekeeping!<br>You can follow along here: <a href="http://ph.ly/mktiles">ph.ly/mktiles</a>. Links are in blue boxes, <em>red</em> is just emphasis. You can comment and edit on <a href="http://www.github.com/maptimephl/making-tiles">github!</a></div>
 <div>Today we're going to learn how to style our own tiles.</div>
 <div>BUT FIRST</div>
 <div>Why do we even care about tiles?</div>
@@ -121,6 +121,30 @@ window.onload = function() {
 <div><img src="images/leaflet_code.png"></div>
 <div><img src="images/anatomy-of-a-web-map.png"></div>
 <!--intro to cartocss, styling workshop --> 
-<div>Ok ok ok, let's move on to actually<em>making tiles</em></div>
-<div>There are <em>MANY</em> ways to roll tiles</div>
-<div>ArcGIS Online, 
+<div>Ok ok ok, let's move on to actually <em>making tiles</em></div>
+<div>Remember: map tiles are just <em>a bunch of images</em> "rolled" up into a web service</div>
+<div>SO: there are <em>MANY</em> ways to roll tiles</div>
+<div><em>ArcGIS Online</em></div>
+<div>ArcGIS Online, <em>Tilestache</em></div>
+<div>ArcGIS Online, Tilestache, <em>Renderd</em></div>
+<div>ArcGIS Online, Tilestache, Renderd, <em>OpenLayers</em></div>
+<div>ArcGIS Online, Tilestache, Renderd, OpenLayers, <em>GDAL</em></div>
+<div>ArcGIS Online, Tilestache, Renderd, OpenLayers, GDAL,<em> etc., etc.</em></div>
+<div>BUT <a href="http://geosprocket.blogspot.com/2014/01/on-reverse-engineering-map-stack.html">"you should probably just use Mapbox"</a></div>
+<div>Mapbox makes two apps: <a href="https://www.mapbox.com/tilemill/">tilemill</a> & <a href="https://www.mapbox.com/mapbox-studio/">mapbox studio</a></div>
+<div>Tilemill was first, and really powerful, but pretty much only does raster, requires big OSM exports</div>
+<div>Also a <em>BIG NOTE:</em> tilemill is deprecated, meaning they won't be updating it anymore</div>
+<div>Mapbox studio does <em>vector tiling</em>, lets you connect to their data servers, <em>BUT</em> you have to pay for their standard plan to share your maps</div>
+<div>Mapbox says there's a way to export mbtiles so you can host on your own server, but as of now <em>I haven't figured out how</em></div>
+<div>All that aside, both apps use <em>CartoCSS</em> to style tiles</div>
+<div>Uhhhhhh what's that?</div>
+<div>CartoCSS is a "rule-based" language for applying styles to maps</div>
+<div>Meaning, you make rules for different parts of the map and it applies throughout</div>
+<div>Based on <em>Cascading Style Sheets (CSS)</em>, which defines formatting, colors, fonts, and <em>basically everything</em> having to do with a website's appearance</div>
+<div>If you're coming from web development, this is <em>basically the same approach</em> as styling for the web</div>
+<div>If you're coming from GIS, this is a <em>way different approach</em> to making maps</div>
+<div>This is what CartoCSS looks like: <br><img src="images/cartocss.png"></div>
+<div>Breaking it down: selectors and attributes
+
+
+
