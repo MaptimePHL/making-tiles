@@ -86,6 +86,7 @@ window.onload = function() {
 </script></head><body>
 <div>Making<em>Tiles</em></div>
 <div>By <a href="http://www.twitter.com/hamhandedly">Patrick Hammons</a> and <a href="http://www.twitter.com/jawntehrani">Jon Tehrani</a></div>
+<div>Special thanks to <em>Lyzi Diamond</em> from MaptimeOAK & <em>James Seppi</em> from MaptimeATX</div>
 <div>Housekeeping!<br>You can follow along here: <a href="http://ph.ly/mktiles">ph.ly/mktiles</a>. Links are in blue boxes, <em>red</em> is just emphasis. You can comment and edit on <a href="http://www.github.com/maptimephl/making-tiles">github!</a></div>
 <div>Today we're going to learn how to style our own tiles.</div>
 <div>BUT FIRST</div>
@@ -132,7 +133,7 @@ window.onload = function() {
 <div>ArcGIS Online, Tilestache, Renderd, OpenLayers, GDAL,<em> etc., etc.</em></div>
 <div>BUT <a href="http://geosprocket.blogspot.com/2014/01/on-reverse-engineering-map-stack.html">"you should probably just use Mapbox"</a></div>
 <div>Mapbox makes two apps: <a href="https://www.mapbox.com/tilemill/">tilemill</a> & <a href="https://www.mapbox.com/mapbox-studio/">mapbox studio</a></div>
-<div>Tilemill was first, and really powerful, but pretty much only does raster, requires big OSM exports</div>
+<div>Tilemill was first, and really powerful, but pretty much only does raster and requires big OSM exports</div>
 <div>Also a <em>BIG NOTE:</em> tilemill is deprecated, meaning they won't be updating it anymore</div>
 <div>Mapbox studio does <em>vector tiling</em>, lets you connect to their data servers, <em>BUT</em> you have to pay for their standard plan to share your maps</div>
 <div>Mapbox says there's a way to export mbtiles so you can host on your own server, but as of now <em>I haven't figured out how</em></div>
@@ -144,7 +145,48 @@ window.onload = function() {
 <div>If you're coming from web development, this is <em>basically the same approach</em> as styling for the web</div>
 <div>If you're coming from GIS, this is a <em>way different approach</em> to making maps</div>
 <div>This is what CartoCSS looks like: <br><img src="images/cartocss.png"></div>
-<div>Breaking it down: selectors and attributes
-
+<div>Every CSS rule has <em>attributes</em> and <em>values</em></div>
+<div><em>Attributes</em> are the <em>thing you're styling </em>(polygon-line, polygon-fill, etc.), and the <em>value</em> is <em>how it's styled </em>(line weight, color, etc.)</div>
+<div>Important: each attribute/value line is <em>followed by a semi-colon</em></div>
+<div>There are a <em>TON</em> of attributes, but <a href="https://github.com/mapbox/carto/blob/master/docs/latest.md">here's the full list</a></div>
+<div>To style a specifc element, we use a <em>selector</em></div>
+<div><em>ID selectors</em> target an element's <em>unique ID</em></div>
+<div><em>Class selectors</em> target <em>potentially multiple datasets</em> grouped by their class</div>
+<div>Octothorpe (#) = ID Selector, dot (.) = class selector</div>
+<div>"Map" is another selector, but just refers to the background where there isn't any data to style</div>
+<div><em>Filters</em> make selectors even more specific, only applying in <em>certain conditions</em></div>
+<div>What would this style apply to?:<img src="images/filters.png"></div>
+<div>Multiple selectors can be filtered by using <em>commas</em> (applies when either condition is true) or <em>no commas</em> (when both conditions are true)</div>
+<div>Either/or <img src="images/comma.png"></div>
+<div>Both <img src="images/chained.png"></div>
+<div>Rules are <em>applied in order of appearance</em> and <em>overwritten</em> by subsequent rules</div>
+<div> <img src="images/order.png"></div>
+<div><em>Nesting selectors</em> inside of other rules helps keep things tidy</div>
+<div><img src="images/nesting.png"></div>
+<div><img src="images/nesting.png">WOW SO CLEAN</div>
+<div>Another really cool thing: <em>variables!</em></div>
+<div>Variables let you access attributes and <em>call them later on</em></div>
+<div><img src="images/variables.png"></div>
+<div><img src="images/variables.png">SUPER USEFUL</div>
+<div><em>Colors</em> can be defined in a bunch of ways</div>
+<div>
+  <ul>
+    <li><em>Name</em>: blue</li>
+    <li><em>Hex</em>: #47DAD3</li>
+    <li><em>RGB (red, green, blue)</em>: rgb(71, 218 211)</li>
+    <li><em>HSL (hue, saturation, lightness)</em>: hsl(177, 67%, 57%)</li>
+  </ul>
+</div>
+<div><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Tools/ColorPicker_Tool">Play with CSS colors here</a></div>
+<div>Color paletes <a href="http://paletton.com/">here</a>, 
+<a href="http://design-seeds.com/index.php/search">here</a>, <a href="https://kuler.adobe.com/create/color-wheel/">here</a>, and <a href="http://www.colourlovers.com/">here.</a></div>
+<div><img src="images/brewer.png"></div>
+<div><img src="images/brewer.png"><a href="http://colorbrewer2.org/">COLOR BREWER</a> IS RAD</div>
+<div>There's <em>a lot</em> you can do with CartoCSS, but let's <em>START STYLING</em></div>
+<div>For more on carto, <a href="https://www.mapbox.com/tilemill/docs/manual/carto/">check out the docs
+</a></div>
+<div></div>
+</body>
+</html>
 
 
