@@ -83,28 +83,34 @@ window.onload = function() {
 
     go(cur);
 };
-</script></head><body>
-<div>Making<em>Tiles</em></div>
+</script>
+</head>
+
+<body>
+<div>... annnnnddddd I would roll ten thousand <em>Tiles</em></div>
 <div>By <a href="http://www.twitter.com/hamhandedly">Patrick Hammons</a> and <a href="http://www.twitter.com/jawntehrani">Jon Tehrani</a></div>
 <div>Special thanks to <em>Lyzi Diamond</em> from MaptimeOAK & <em>James Seppi</em> from MaptimeATX</div>
-<div>Housekeeping!<br>You can follow along here: <a href="http://ph.ly/mktiles">ph.ly/mktiles</a>. Links are in blue boxes, <em>red</em> is just emphasis. You can comment and edit on <a href="http://www.github.com/maptimephl/making-tiles">github!</a></div>
-<div>Before we get going, make sure you have <a href="https://www.mapbox.com/mapbox-studio/">mapbox studio</a> installed</div>
-<div>Today we're going to learn how to style our own tiles.</div>
+<div>Housekeeping!</div>
+<div>You can follow along here: <a href="http://ph.ly/mktiles">ph.ly/mktiles</a></div> 
+<div>Links are in blue boxes, <em>red</em> is just emphasis. <br>You can comment and edit on <a href="http://www.github.com/maptimephl/making-tiles">github!</a></div>
+<div>Before we get going, make sure you have <a href="https://www.mapbox.com/mapbox-studio/">mapbox studio</a> installed.</div>
+<div>Today we're going to learn how to style tiles.</div>
 <div>BUT FIRST</div>
-<div>Why do we even care about tiles?</div>
-<div>Flashback: our first meetup</div>
-<div><em><img src="images/tiles/toner.jpg">this thing is super important, remember?</em></div>
-<div>Back in anatomy of a web map,<a href="http://lyzidiamond.com/">Lyzi Diamond</a>put together a <em>TON</em> of info about tiles</div>
-<div>Like, for example...</div>
-<div>All tiles<br>=<br>same size! 256x256 pixels<br>same boundaries<img src="images/tiles.gif"></div>
+<div>What are tiles? Why are they so important?</div>
+<div>Flashback</div>
+<div>A long time ago, in a galaxy far, far away ...</div>
+<div>Just Kidding</div>
+<div>Flashback</div>
+<div>Our 2nd Meetup</div>
+<div>We discussed the Anatomy of a Web Map</div>
+<div>We learned ...</div>
+<div><table><tr><td><img src="images/tiles/toner.jpg"></td><td><em>this is a tile</em></td></table></div>
+<div>It is a 256 x 256 pixel image stored somewhere on the web</div>
+<div>Multiple tiles work together to represent what would instead be one large image</div>
+<div>This is super important, because ...</div>
 <div><img src="images/tiles-loading.gif">All these little tiles load <em>way faster</em> than one big map.</div>
-<div>Web maps like this load the tiles that are on your screen. If the map is “smart,” it will pre-load tiles outside of the screen, along the top, bottom, left, and right.</div>
-<div>Each <em>zoom level</em> has its own set of tiles!</div>
-<div><img src="images/tiles/zoom0.png"><em>Zoom level 0: one tile for the world.</em></div>
-<div>With each additional zoom level, the number of tiles increases exponentially.</div>
-<div><img src="images/tiles/zoom1.png"><em>Zoom level 1: 4 tiles for the world.</em></div>
-<div><img src="images/tiles/zoom2-3-4-5.png"><em>Zoom level 2, 3, 4, 5</em></div>
-<div><img src="images/tiles/zoom13.png"><em>Zoom level 13</em></div>
+<div>Web maps which pre-load tiles outside of the screen are known as <em>"smart"</em> or </em>"slippy"</em> maps</div>
+
 <div>Tiles are <em>rendered</em> in advance (usually) then stored in a cache</div>
 <div>Map tiles are just images on the web, so you can link to them individually.</div>
 <div>For example: <a href="http://tile.openstreetmap.org/4/2/6.png">http://tile.openstreetmap.org/4/2/6.png</a></div>
@@ -112,16 +118,7 @@ window.onload = function() {
 <div>http://<em>tile.openstreetmap.org</em>/4/2/6.png -- this is the name of the tile server.</div>
 <div>http://tile.openstreetmap.org/<em>4</em>/2/6.png -- this is the z value, or the zoom level.</div>
 <div>http://tile.openstreetmap.org/4/<em>2/6</em>.png -- This is the x/y value, or the place in the grid where the tile lives.</div>
-<div>Here's a review of how webmap components fit together:</div>
-<div><img src="images/basemap-datalayers-01.png"></div>
-<div><img src="images/basemap-datalayers-02.png"></div>
-<div><img src="images/basemap-datalayers-03.png"></div>
-<div><img src="images/basemap-datalayers-04.png"></div>
-<div><img src="images/basemap-datalayers-05.png"></div>
-<div><img src="images/basemap-datalayers-06.png"></div>
-<div>Make sense?</div>
-<div><img src="images/leaflet_code.png"></div>
-<div><img src="images/anatomy-of-a-web-map.png"></div>
+
 <!--intro to cartocss, styling workshop --> 
 <div>Ok ok ok, let's move on to actually <em>making tiles</em></div>
 <div>Remember: map tiles are just <em>a bunch of images</em> "rolled" up into a web service</div>
