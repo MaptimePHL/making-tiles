@@ -87,13 +87,13 @@ window.onload = function() {
 </head>
 
 <body>
-<div>... annnnnddddd I would roll ten thousand <em>Tiles</em></div>
+<div>Intro to <em>CartoCSS</em></div>
 <div>By <a href="http://www.twitter.com/hamhandedly">Patrick Hammons</a> and <a href="http://www.twitter.com/jawntehrani">Jon Tehrani</a></div>
 <div>Special thanks to <em>Lyzi Diamond</em> from MaptimeOAK & <em>James Seppi</em> from MaptimeATX</div>
 <div>Housekeeping!</div>
 <div>You can follow along here: <a href="http://ph.ly/mktiles">ph.ly/mktiles</a></div> 
-<div>Links are in blue boxes, <em>red</em> is just emphasis. <br>You can comment and edit on <a href="http://www.github.com/maptimephl/making-tiles">github!</a></div>
-<div>Before we get going, make sure you have <a href="https://www.mapbox.com/mapbox-studio/">mapbox studio</a> installed.</div>
+<div>Links are in <a>blue boxes</a>, <em>red</em> is just emphasis. <br>You can comment and edit on <a href="http://www.github.com/maptimephl/making-tiles">github!</a></div>
+<div>Also, before we get going, make sure you have <a href="https://www.mapbox.com/mapbox-studio/">mapbox studio</a> installed.</div>
 <div>Today we're going to learn how to style tiles.</div>
 <div>BUT FIRST</div>
 <div>What are tiles? Why are they so important?</div>
@@ -104,15 +104,16 @@ window.onload = function() {
 <div>Our 2nd Meetup</div>
 <div>We discussed the Anatomy of a Web Map</div>
 <div>We learned ...</div>
-<div><table><tr><td><img src="images/tiles/toner.jpg"></td><td><em>this is a tile</em></td></table></div>
+<div>this is a tile <img src="images/tiles/toner.jpg"></div>
 <div>It is a 256 x 256 pixel image stored somewhere on the web</div>
 <div>Multiple tiles work together to represent what would instead be one large image</div>
 <div>This is super important, because ...</div>
 <div><img src="images/tiles-loading.gif">All these little tiles load <em>way faster</em> than one big map.</div>
-<div>Web maps which pre-load tiles outside of the screen are known as <em>"smart"</em> or </em>"slippy"</em> maps</div>
-
+<div>People sometimes refer to web maps which pre-load tiles outside of the screen as <em>"slippy"</em></div>
 <div>Tiles are <em>rendered</em> in advance (usually) then stored in a cache</div>
-<div>Map tiles are just images on the web, so you can link to them individually.</div>
+<div>The term for web maps which store tiles in a cache for ready access is a <em>"smart"</em> map</div>
+
+<div>Because map tiles are just images on the web, so you can link to them individually.</div>
 <div>For example: <a href="http://tile.openstreetmap.org/4/2/6.png">http://tile.openstreetmap.org/4/2/6.png</a></div>
 <div>In order to understand how this works, let's break down the URL.</div>
 <div>http://<em>tile.openstreetmap.org</em>/4/2/6.png -- this is the name of the tile server.</div>
